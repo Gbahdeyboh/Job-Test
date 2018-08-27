@@ -325,7 +325,7 @@ body{
   #signinInstead{
       color: var(--yellow)!important;
   }
-  #fullNameError, #emailError, #mobileError, #monthlySavingsError, #workTypeError, #cardTypeError, #cardNumberError, #passwordError, #passwordConfirmError{
+  #fullNameError, #emailError, #mobileError, #monthlySavingsError, #workTypeError, #cardTypeError, #cardNumberError, #expDateError, #cvvError, #cardHolderError, #passwordError, #passwordConfirmError{
       color: var(--red)!important;
       display: none;
       position: absolute;
@@ -375,3 +375,51 @@ body{
       .signupContent{
       }
   }
+  /*Default loading animation*/
+  .animationload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    padding-top: 20px;
+    /*background-color: #fff;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;*/
+}
+.osahanloading {
+    animation: 1.5s linear 0s normal none infinite running osahanloading;
+    background: #fed37f none repeat scroll 0 0;
+    border-radius: 50px;
+    height: 50px;
+    margin-top: -25px;
+    width: 50px;
+}
+.osahanloading::after {
+    animation: 1.5s linear 0s normal none infinite running osahanloading_after;
+    border-color: #85d6de transparent;
+    border-radius: 80px;
+    border-style: solid;
+    border-width: 10px;
+    content: "";
+    height: 80px;
+    left: -15px;
+    position: absolute;
+    top: -15px;
+    width: 80px;
+}
+@keyframes osahanloading {
+0% {
+    transform: rotate(0deg);
+}
+50% {
+    background: #85d6de none repeat scroll 0 0;
+    transform: rotate(180deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}

@@ -1,24 +1,28 @@
-$(document).ready(function() {
-    $("#cardNumber").keydown(function (e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
-             // Allow: Ctrl/cmd+A
-            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
-             // Allow: Ctrl/cmd+C
-            (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
-             // Allow: Ctrl/cmd+X
-            (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
-             // Allow: home, end, left, right
-            (e.keyCode >= 35 && e.keyCode <= 39)) {
-                 // let it happen, don't do anything
-                 return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
+//Show Loading animation when page loads
+document.addEventListener('DOMContentLoaded', function(){
+    const overlay = document.querySelector('.pageOverlay');
+    const overlayContent = document.querySelector('.overlayContent');
+    const loadText = document.querySelector('#loadText');
+    overlay.style.display = "block";
+    overlayContent.style.display = "flex";
+    loadText.innerHTML = "Loading Please Wait ......";
+    setTimeout(function(){
+        overlay.style.display = "none";
+        overlayContent.style.display = "none";
+    } ,4000);
 });
+//The below append spaces in between inputed card numbers
+function appendSpace(val){
+    if(val.length == 4 || val.length == 9 || val.length == 14){
+        document.querySelector('#cardNumber').value += " ";
+    }
+}
+//The below appends dash to cards expiry date
+function appendDash(val){
+    if(val.length == 2){
+        document.querySelector('#expDate').value += "/";
+    }
+}
 //the function below shows the password in plain text when the ey-open icon is clicked
 function showPass(){
     const eyeOpen = document.querySelector('#eyeOpen'); //eye open icon
@@ -49,6 +53,9 @@ function validateInputs(){
     const mobile = document.querySelector('#mobile');
     const monthlySavings = document.querySelector('#monthlySavings');
     const cardNumber = document.querySelector('#cardNumber');
+    const expDate = document.querySelector('#expDate');
+    const cvv = document.querySelector('#cvv');
+    const accountName = document.querySelector('#accountName');
     //check if all fields are filled out
     function notEmpty(){
         if(fullname.value == ""){ //if fullname is empty display errors
@@ -79,6 +86,22 @@ function validateInputs(){
             mobile.style.borderBottomColor = "red";
             mobileError.style.display = "block";
         }
+        if(password.value !== passwordConfirm.value){
+            document.querySelector('#passwordConfirmError').style.display = "block";
+            document.querySelector('#passwordConfirmError').innerHTML = "Password mismatched";
+        }
+        if(expDate.value == ""){
+            expDate.style.borderBottomColor = "red";
+            expDateError.style.display = "block";
+        }
+        if(cvv.value == ""){
+            cvv.style.borderBottomColor = "red";
+            cvvError.style.display = "block";
+        }
+        if(accountName.value == ""){
+            accountName.style.borderBottomColor = "red";
+            cardHolderError.style.display = "block";
+        }
         //initialize materialize plugin for getting selected work type
         var instance = M.FormSelect.getInstance($('#formSelect'));
         var _d = instance.getSelectedValues(); //get arrays of selected bank
@@ -94,8 +117,8 @@ function validateInputs(){
             document.querySelector('#cardTypeError').style.display = "block"; //display error if no bank was selected
         }
         //when all fields are filled out
-        if(fullname.value !== "" && email.value !== "" && password.value !== "" &&
-        passwordConfirm.value !== "" && monthlySavings.value !== "" && accountNumber.value !== ""){
+        if(fullname.value !== "" && email.value !== "" && password.value !== "" && expDate.value !== "" && cvv.value !== "" && accountName.value !== "" &&
+        passwordConfirm.value !== "" && monthlySavings.value !== "" && cardNumber.value !== "" && password.value == passwordConfirm.value){
         return "NotEmpty"; //return a string when no field is left out
         }
     }
@@ -158,7 +181,9 @@ function validatePass(password){
 function login(){
     //if(Some parameters are right){Let server handle login}
     const overlay = document.querySelector('.pageOverlay');
-   const overlayContent = document.querySelector('.overlayContent');
+    const overlayContent = document.querySelector('.overlayContent');
+    const loadText = document.querySelector('#loadText');
     overlay.style.display = "block";
     overlayContent.style.display = "flex";
+    loadText.innerHTML = "Creating your account ......";
 }
