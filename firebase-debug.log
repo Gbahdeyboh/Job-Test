@@ -1,0 +1,41 @@
+[debug] [2018-08-25T21:22:56.115Z] ----------------------------------------------------------------------
+[debug] [2018-08-25T21:22:56.118Z] Command:       /usr/bin/node /usr/local/bin/firebase serve
+[debug] [2018-08-25T21:22:56.119Z] CLI Version:   4.0.3
+[debug] [2018-08-25T21:22:56.119Z] Platform:      linux
+[debug] [2018-08-25T21:22:56.119Z] Node Version:  v8.10.0
+[debug] [2018-08-25T21:22:56.119Z] Time:          Sat Aug 25 2018 21:22:56 GMT+0000 (GMT)
+[debug] [2018-08-25T21:22:56.119Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-25T21:22:56.137Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-25T21:22:56.138Z] > authorizing via signed-in user
+[debug] [2018-08-25T21:22:56.141Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-25T21:22:56.142Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/oCwEEec5WukB9QlTK5GLJkSDf8pflApLuOCnvYDmwtI',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Aug 25 2018 21:22:56 GMT+0000 (GMT)
+[debug] [2018-08-25T21:22:56.867Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-25T21:22:56.914Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/debo-d791b  
+  
+ Sat Aug 25 2018 21:22:56 GMT+0000 (GMT)
+[debug] [2018-08-25T21:22:58.485Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-25T21:22:58.488Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/debo-d791b/tokens  
+  
+ Sat Aug 25 2018 21:22:58 GMT+0000 (GMT)
+[debug] [2018-08-25T21:22:59.868Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-25T21:22:59.870Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/debo-d791b  
+  
+ Sat Aug 25 2018 21:22:59 GMT+0000 (GMT)
+[debug] [2018-08-25T21:23:01.349Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/gbahdeyboh/Desktop/programs/work2'...
+[info] 
+[debug] [2018-08-25T21:23:01.355Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/121504974373/clients/_:getWebAppConfig  
+  
+ Sat Aug 25 2018 21:23:01 GMT+0000 (GMT)
+[debug] [2018-08-25T21:23:02.867Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

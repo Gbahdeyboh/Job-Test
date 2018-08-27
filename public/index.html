@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/Lato/latofonts.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/icons/icon_set_1.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/icons/icon_set_2.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.4.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.4.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.4.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.4.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.4.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1;}    
+    </style>
+  </head>
+  <body>
+    <!-- main sign up body starts here-->
+    <div class="mainSignupBody">
+        <!-- sign up body starts here-->
+        <div class="signupBody z-depth-2">
+            <div class="row">
+                <!--sign up content starts here-->
+                <div class="col s12 m12 l12 white signupContent">
+                    <!--sign up content header-->
+                    <div class="signupContentHeader white center-align">
+                        <div id="companyName"><h5>{Name/Logo}</h5></div>
+                        <div id="headerText">Create Your {Company} Account</div>
+                        <div><p id="continue">Continue to {Company}</p></div>
+                    </div>
+                    <div class="signupContentBody">
+                        <!--sign up content body-->
+                        <br />
+                        <div class="row">
+                            <!--Personal info-->
+                            <div class="col s5 m5 l5 grey-text">
+                                <hr  width="100%" class="line"/>
+                            </div>
+                            <div class="col s2 m2 l2 grey-text center-align">Personal info</div>
+                            <div class="col s5 m5 l5 grey-text">
+                                <hr  width="100%" class="line"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!--lastname input field-->
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="text" id="fullname" autofocus/>
+                                <label for="lastname">Full name</label>
+                                <div class="col s12 m12 l12" id="fullNameError">Enter fullname</div>
+                            </div>
+                            <!--email input field-->
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="email" id="email" validate="validate"/>
+                                <label for="email">Email</label>
+                                <div class="col s12 m12 l12" id="emailError">Enter email</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <!--phone number input field-->
+                          <div class="col s12 m6 l6 input-field">
+                              <input type="number" id="mobile" validate="validate" placeholder="+234"/>
+                              <label for="mobile">Phone no</label>
+                              <div class="col s12 m12 l12" id="mobileError">Enter Phone number</div>
+                          </div>
+                          <!--work type input field-->
+                          <div class="col s12 m6 l6 input-field">
+                                <select id="formSelect">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="1">Shop owner</option>
+                                    <option value="2">Start up founder/Co-founder</option>
+                                    <option value="3">Freelancer</option>
+                                    <option value="4">Big business owner</option>
+                                    <option value="5">Employee of a company</option>
+                                    <option value="6">Not yet working</option>
+                                </select>
+                                <label>work type</label>
+                                <div class="col s12 m12 l12" id="workTypeError">Enter work type</div>
+                            </div>
+                        </div>
+                        <br /><br /><br />
+                        <div class="row">
+                            <!--Account info-->
+                            <div class="col s5 m5 l5 grey-text">
+                                <hr  width="100%" class="line"/>
+                            </div>
+                            <div class="col s2 m2 l2 grey-text center-align">Account info</div>
+                            <div class="col s5 m5 l5 grey-text">
+                                <hr  width="100%" class="line"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="number" id="monthlySavings" placeholder="How much do you want to save monthly?">
+                                <label for="monthlySavings">Monthly savings</label>
+                                <div class="col s12 m12 l12" id="monthlySavingsError">Enter monthly savings</div>
+                              </div>
+                              <div class="col s12 m6 l6 input-field">
+                                  <select id="cardSelect">
+                                      <option value="" disabled selected>Choose your option</option>
+                                      <option value="1">MASTERCARD</option>
+                                      <option value="2">VISA</option>
+                                  </select>
+                                  <label>Type of debit card</label>
+                                  <div class="col s12 m12 l12" id="cardTypeError">Enter card type</div>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m6 l6 input-field">
+                                <input type="text" id="cardNumber" validate="validate"/>
+                                <label for="cardName">Card number</label>
+                                <div class="col s12 m12 l12" id="cardNumberError">Enter card number</div>
+                            </div>
+                            <div class="col s6 m3 l3 input-field">
+                              <input type="text" id="expDate" placeholder="01/18" maxlength="5"/>
+                              <label for="expDate">Expiry date</label>
+                            </div>
+                            <div class="col s6 m3 l3 input-field">
+                                <input type="text" id="cvv" />
+                                <label for="cvv">CVV</label>
+                            </div>
+                        </div>
+                        <div class="row input-field">
+                          <input type="text" id="accountName" />
+                          <label for="accountName" >Card holders name</label>
+                        </div>
+                        <div class="row">
+                            <!--password input field-->
+                            <div class="col s12 m5 l5 input-field">
+                                <input type="password" id="password" onkeyup="validatePass(this.value)"/>
+                                <label for="password">Password</label>
+                                <div class="col s12 m12 l12" id="passwordError">Enter password</div>
+                            </div>
+                            <div class="col s10 m5 l5 input-field">
+                                <!--passwordConfirm input field-->
+                                    <input type="password" id="passwordConfirm" />
+                                    <label for="passwordConfirm">Confirm Password</label>
+                                    <div class="col s12 m12 l12" id="passwordConfirmError">Re-enter password</div>
+                            </div>
+                            <div class="col s2 m2 l2 eye-open" id="eyeOpen" onclick="showPass()">
+                                <i class="fas fa-eye fa-2x"></i>
+                            </div>
+                            <div class="col s2 m2 l2 eye-slash" id="eyeSlash" onclick="hidePass()">
+                                <i class="fas fa-eye-slash fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="row passwordStats">
+                            <div class="progress lightgrey">
+                                <div class="determinate level"></div>
+                            </div>
+                            <span id="status"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <div id="signinInstead"><a href="login.html" >Sign in instead?</a></div>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                <button class="btn waves-effect waves-light" id="createAccount" onclick="validateInputs()">Create account</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m6 l6"><a href="#">
+                              <div class="signupFacebook">
+                               <!--Sign up with facebook-->
+                                <div class="row">
+                                    <div class="col s2 m2 l1 facebookLogo valign-wrapper">
+                                            <i class="social_facebook"></i><!--facebook icon-->
+                                    </div>
+                                    <div class=" col s10 m10 l11 facebookSignupText">
+                                            Sign Up with Facebook
+                                    </div>
+                                    </div>
+                                </div>
+                            </a></div>
+                            <!--sign Up with twitter-->
+                            <div class="col s12 m6 l6"><a href="#">
+                              <div class="signupTwitter">
+                                <div class="row">
+                                    <div class="col s2 m2 l1 twitterLogo valign-wrapper">
+                                        <i class="social_twitter"></i> <!--twitter logo-->
+                                    </div>
+                                    <div class=" col s10 m10 l11 twitterSignupText">
+                                        Sign Up with Twitter
+                                    </div>
+                                </div>
+                            </div>
+                          </a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sign up body ends here-->
+    </div>
+    <!-- main sign up body starts here-->
+    <div class="pageOverlay"></div>
+    <div class="overlayContent">
+            <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+              
+                    <div class="spinner-layer spinner-red">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+              
+                    <div class="spinner-layer spinner-yellow">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+              
+                    <div class="spinner-layer spinner-green">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+    </div>
+    <script>
+       /* document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });*/
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,377 @@
+:root{
+    --red : #d50000;;
+    --blue: #0c50e8;
+    --lightblue: #4177f1;
+    --yellow: #FBC02D;
+    --lightyellow: #f9d67f;
+    --facebookBlue: #4267B2;
+    --twitterblue: #1DA1F2;
+}
+body{
+    font-family: 'LatoLatinWeb', 'LatoWeb', 'Lato', sans-serif;
+}
+.mainBody{
+    padding-top: 9em;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+}
+.loginBody{
+    width: 60%;
+    background: white;
+}
+@media only screen and (max-width: 600px){
+    .mainBody{
+        padding-top: 0px!important;
+    }
+    .loginBody{
+        width: 100%;
+        position: absolute;
+        top: 0px;
+    }
+    .loginSpace{
+        display: none;
+    }
+    .loginContent{
+        width: 100%;
+        height: 90%!important;
+        margin: 0px!important;
+    }
+    .loginFooter{
+        height: 15%!important;
+    }
+    .loginContentBody{
+        height: 50%;
+        width: 100%!important;    
+        border-radius: 0px!important;
+        box-shadow: 0px 0px 0px white!important;
+    }
+    .loginContentBodyHeader{
+        border-top-right-radius: 0px!important;
+        border-top-left-radius: 0px!important;
+    }
+    .companyName{
+        border-top-right-radius: 0px!important;
+        border-top-left-radius: 0px!important;
+    }
+    .footerContent{
+        width: 100%;
+    }
+}
+.loginSpace, .loginFooter{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerContent{
+    width: 55%;
+}
+.fCon div{
+    line-height: 3em;
+}
+.fCon div a{
+    color: grey!important;
+}
+.loginContent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginContentBody{
+    width: 55%;
+    border-radius: 10px;
+    padding-right: 2.5em!important;
+    padding-left: 2.5em!important;
+}
+.loginContentBodyHeader{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    height: 130px;
+    margin-top: 0px
+}
+.companyName{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    height: 40%;
+    padding-top: 0.2em;
+}
+.companyName h5{
+    color: var(--yellow);
+}
+.loginTo{
+    height: 60%;
+}
+#signIn{
+    font-size: 1.7em;
+}
+#continue{
+    font-size: 1.2em;
+}
+/* label color */
+.input-field label {
+    color: grey!important;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: var(--yellow)!important;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: var(--yellow)!important;
+  }
+  /*Email input layout*/
+  .input-field input[type=email]:focus + label {
+    color: var(--yellow)!important;
+  }
+  .input-field input[type=email]:focus {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field input[type=email].valid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field input[type=email].invalid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  /*Number input layout*/
+  .input-field input[type=number]:focus + label {
+    color: var(--yellow)!important;
+  }
+  .input-field input[type=number]:focus {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field input[type=number].valid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field input[type=number].invalid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field .prefix.active {
+    color: var(--yellow)!important;
+  }
+  /*Password input layout*/
+  .input-field input[type=password]:focus + label {
+    color: var(--yellow)!important;
+  }
+  .input-field input[type=password]:focus {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field input[type=password].valid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field input[type=password].invalid {
+    border-bottom: 1px solid var(--yellow)!important;
+    box-shadow: 0 1px 0 0 var(--yellow)!important;
+  }
+  .input-field .prefix.active {
+    color: var(--yellow)!important;
+  }
+  #forgotPassword{
+      text-align: left;
+      color: var(--red);
+  }
+  .login{
+      background: var(--lightyellow)!important;
+  }
+  .login:hover{
+      background: var(--yellow)!important;
+  }
+  .createAccount a{
+      padding-top: 0.3em;
+      display: flex;
+      vertical-align: center;
+      color: var(--yellow)!important;
+  }
+  .loginFacebook, .loginTwitter, .signupFacebook, .signupTwitter{
+      background: var(--facebookBlue);
+      width: 100%;
+      height: 50px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      cursor: pointer;
+      margin-bottom: 10px;
+  }
+  .loginTwitter, .signupTwitter{
+      background: var(--twitterblue);
+  }
+  .facebookLogo, .twitterLogo{
+    display: flex;
+    vertical-align: center;
+    justify-content: center;
+    height: 45px;
+    line-height: 50px;
+  }
+  .facebookLogo i, .twitterLogo i {
+      color: #FFFF!important;
+      font-size: 2.3em;
+      padding-left: 40px;
+  }
+  .facebookLoginText, .twitterLoginText, .facebookSignupText, .twitterSignupText{
+      text-align: left;
+      height: 30px;
+      line-height: 50px;
+      color: #FFFF;
+      font-size: 1.2em;
+      font-weight: 600;
+      text-align: center;
+  }
+  .line{
+      background: lightgrey;
+      height: 1px;
+      border: 0px;
+  }
+  /*Sign up page*/
+  .mainSignupBody{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .signupBody{
+      width: 55%;
+      height: 90%;
+      background: white;
+      margin: 2em;
+      padding: 10px;
+      border-radius: 10px;
+  }
+  .footer{
+      width: 55%;
+  }
+  .Icon{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh!important;
+  }
+  .iconCircle{
+      border: 10px solid var(--red);
+      border-radius: 30em;
+      height: 300px;
+      width: 100%!important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  #icon{
+      font-size: 10em;
+      color: var(--lightblue);
+  }
+  .signupContent{
+      padding: 20px!important;
+  }
+  .signupContentHeader{
+      height: 130px;
+  }
+  #companyName h5{
+      color: var(--yellow);
+  }
+  #headerText{
+      font-size: 1.5em;
+      font-weight: 600;
+  }
+  #continue{
+      font-weight: 400;
+  }
+  .eye-open, .eye-slash{
+      display: flex;
+      justify-content: center;
+      padding-top: 2em!important;
+      cursor: pointer;
+  }
+  .eye-slash{
+      display: none;
+  }
+  #createAccount{
+      background: var(--yellow);
+  }
+  #createAccount:hover{
+      background: var(--lightyellow);
+  }
+  #signinInstead{
+      color: var(--yellow)!important;
+  }
+  #fullNameError, #emailError, #mobileError, #monthlySavingsError, #workTypeError, #cardTypeError, #cardNumberError, #passwordError, #passwordConfirmError{
+      color: var(--red)!important;
+      display: none;
+      position: absolute;
+  }
+  .pageOverlay{
+      display: none;
+      background: white;
+      position: fixed;
+      top: 0px;
+      bottom: 0px;
+      right: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      opacity: 0.7;
+  }
+  .overlayContent{
+    background: transparent;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  .passwordStats{
+      display: none;
+  }
+  @media only screen and (max-width: 600px){
+      .signupBody{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        margin: 0px;
+        padding: 0px;
+      }
+      .signupContent{
+      }
+  }
