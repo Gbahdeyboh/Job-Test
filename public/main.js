@@ -103,17 +103,17 @@ function validateInputs(){
             cardHolderError.style.display = "block";
         }
         //initialize materialize plugin for getting selected work type
-        var instance = M.FormSelect.getInstance($('#formSelect'));
+        var instance = M.FormSelect.getInstance(document.querySelector('#formSelect'));
         var _d = instance.getSelectedValues(); //get arrays of selected bank
         var selectedValue = _d[0];//get value of selected bank from array
         if(selectedValue.search(/[0-9]/g) == -1){ //check if selected value is a number
             document.querySelector('#workTypeError').style.display = "block"; //display error if no bank was selected
         }
         //initialize materialize plugin for getting selected card type
-        var cardInstance = M.FormSelect.getInstance($('#cardSelect'));
-        var card = instance.getSelectedValues(); //get arrays of selected bank
-        var selectedValue = card[0];//get value of selected bank from array
-        if(selectedValue.search(/[0-9]/g) == -1){ //check if selected value is a number
+        var cardInstance = M.FormSelect.getInstance(document.querySelector('#cardSelect'));
+        var card = cardInstance.getSelectedValues(); //get arrays of selected bank
+        var selectedCard = card[0];//get value of selected card from array
+        if(selectedCard.search(/[0-9]/g) == -1){ //check if selected value is a number
             document.querySelector('#cardTypeError').style.display = "block"; //display error if no bank was selected
         }
         //when all fields are filled out
@@ -128,9 +128,13 @@ function validateInputs(){
             if(password.value !== passwordConfirm.value){
                 //display password error message
                 passwordConfirmError.style.display = "block";
-                passwordConfirmError.innerHTML = "Password mismatched"
+                passwordConfirmError.innerHTML = "Password mismatched";
+                /*store a value in the local storage to show that all data inputed has
+                 been validated before it goes to the database on the query.js page */
+                localStorage.setItem('inputedDataStatus', 'Bad');
             }
             else{
+                localStorage.setItem('inputedDataStatus', 'Good');
                 //display loading animation
                 const overlay = document.querySelector('.pageOverlay');
                 const overlayContent = document.querySelector('.overlayContent');
@@ -140,7 +144,7 @@ function validateInputs(){
         })();
     }
 }
-//The belwo makes sure the password inputed is Strong
+//The below makes sure the password inputed is Strong
 function validatePass(password){
     const passwordStats = document.querySelector('.passwordStats'); //password status div
     const passStatus = document.querySelector('#status'); //password status text
