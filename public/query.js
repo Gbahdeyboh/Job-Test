@@ -1,7 +1,7 @@
 //When Dom loads, execute script 
 document.addEventListener('DOMContentLoaded', function(){
     document.querySelector('#createAccount').addEventListener('click', function(){
-        if(localStorage.getItem('inputedDataStatus') !== "Good"){
+        if(localStorage.getItem('inputedDataStatus') == "Good"){
             //declare firestore database
             const db = firebase.firestore();
             const settings = {/* your settings... */ timestampsInSnapshots: true};
@@ -35,15 +35,14 @@ document.addEventListener('DOMContentLoaded', function(){
                 1 : "Mastercard",
                 2 : "Visa"
             }
-            console.log(cardOptions[selectedCard.value]);
             // add data to database
-           /* db.collection("workUser").add({
+           db.collection("workUser").add({
                 fullname: fullname.value,
                 email: email.value,
                 mobileNo: mobileNo.value,
                 workType: workOptions[selectedWork.value],
                 monthlySavings: monthlySavings.value,
-                cardType: cardType,
+                cardType: cardOptions[selectedCard.value],
                 cardNumber: cardNumber.value,
                 expiryDate: expiryDate.value,
                 cvv: cvv.value,
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
-            });*/
+            });
         }
         else{
             //Do nothing
