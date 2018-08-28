@@ -1,5 +1,6 @@
 //Show Loading animation when page loads
 document.addEventListener('DOMContentLoaded', function(){
+    localStorage.clear();
     const overlay = document.querySelector('.pageOverlay');
     const overlayContent = document.querySelector('.overlayContent');
     const loadText = document.querySelector('#loadText');
@@ -56,6 +57,8 @@ function validateInputs(){
     const expDate = document.querySelector('#expDate');
     const cvv = document.querySelector('#cvv');
     const accountName = document.querySelector('#accountName');
+    const workType = document.querySelector('#formSelect');
+    const cardSelect = document.querySelector('#cardSelect');
     //check if all fields are filled out
     function notEmpty(){
         if(fullname.value == ""){ //if fullname is empty display errors
@@ -102,18 +105,10 @@ function validateInputs(){
             accountName.style.borderBottomColor = "red";
             cardHolderError.style.display = "block";
         }
-        //initialize materialize plugin for getting selected work type
-        var instance = M.FormSelect.getInstance(document.querySelector('#formSelect'));
-        var _d = instance.getSelectedValues(); //get arrays of selected bank
-        var selectedValue = _d[0];//get value of selected bank from array
-        if(selectedValue.search(/[0-9]/g) == -1){ //check if selected value is a number
+        if(workType.value == 0){ //check if selected value is a number
             document.querySelector('#workTypeError').style.display = "block"; //display error if no bank was selected
         }
-        //initialize materialize plugin for getting selected card type
-        var cardInstance = M.FormSelect.getInstance(document.querySelector('#cardSelect'));
-        var card = cardInstance.getSelectedValues(); //get arrays of selected bank
-        var selectedCard = card[0];//get value of selected card from array
-        if(selectedCard.search(/[0-9]/g) == -1){ //check if selected value is a number
+        if(cardSelect.value == 0){ //check if selected value is a number
             document.querySelector('#cardTypeError').style.display = "block"; //display error if no bank was selected
         }
         //when all fields are filled out
@@ -129,9 +124,6 @@ function validateInputs(){
                 //display password error message
                 passwordConfirmError.style.display = "block";
                 passwordConfirmError.innerHTML = "Password mismatched";
-                /*store a value in the local storage to show that all data inputed has
-                 been validated before it goes to the database on the query.js page */
-                localStorage.setItem('inputedDataStatus', 'Bad');
             }
             else{
                 localStorage.setItem('inputedDataStatus', 'Good');

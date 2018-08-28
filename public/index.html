@@ -83,9 +83,9 @@
                               <div class="col s12 m12 l12" id="mobileError">Enter Phone number</div>
                           </div>
                           <!--work type input field-->
-                          <div class="col s12 m6 l6 input-field">
-                                <select id="formSelect">
-                                    <option value="" disabled selected>Choose your option</option>
+                          <div class="col s12 m6 l6">
+                                <select class="browser-default" id="formSelect">
+                                    <option value="0">What type of work do you do?</option>
                                     <option value="1">Shop owner</option>
                                     <option value="2">Start up founder/Co-founder</option>
                                     <option value="3">Freelancer</option>
@@ -93,7 +93,6 @@
                                     <option value="5">Employee of a company</option>
                                     <option value="6">Not yet working</option>
                                 </select>
-                                <label>work type</label>
                                 <div class="col s12 m12 l12" id="workTypeError">Enter work type</div>
                             </div>
                         </div>
@@ -114,13 +113,12 @@
                                 <label for="monthlySavings">Monthly savings</label>
                                 <div class="col s12 m12 l12" id="monthlySavingsError">Enter monthly savings</div>
                               </div>
-                              <div class="col s12 m6 l6 input-field">
-                                  <select id="cardSelect">
-                                      <option value="" disabled selected>Choose your option</option>
+                              <div class="col s12 m6 l6">
+                                  <select id="cardSelect" class="browser-default">
+                                      <option value="0">What type of card are you paying with?</option>
                                       <option value="1">MASTERCARD</option>
                                       <option value="2">VISA</option>
                                   </select>
-                                  <label>Type of debit card</label>
                                   <div class="col s12 m12 l12" id="cardTypeError">Enter card type</div>
                               </div>
                         </div>
@@ -180,34 +178,6 @@
                                 <button class="btn waves-effect waves-light" id="createAccount" onclick="validateInputs()">Create account</button>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col s12 m6 l6"><a href="#">
-                              <div class="signupFacebook">
-                               <!--Sign up with facebook-->
-                                <div class="row">
-                                    <div class="col s2 m2 l1 facebookLogo valign-wrapper">
-                                            <i class="social_facebook"></i><!--facebook icon-->
-                                    </div>
-                                    <div class=" col s10 m10 l11 facebookSignupText">
-                                            Sign Up with Facebook
-                                    </div>
-                                    </div>
-                                </div>
-                            </a></div>
-                            <!--sign Up with twitter-->
-                            <div class="col s12 m6 l6"><a href="#">
-                              <div class="signupTwitter">
-                                <div class="row">
-                                    <div class="col s2 m2 l1 twitterLogo valign-wrapper">
-                                        <i class="social_twitter"></i> <!--twitter logo-->
-                                    </div>
-                                    <div class=" col s10 m10 l11 twitterSignupText">
-                                        Sign Up with Twitter
-                                    </div>
-                                </div>
-                            </div>
-                          </a></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -233,7 +203,6 @@
   // Or with jQuery
 
   $(document).ready(function(){
-    $('select').formSelect();
     $("#cardNumber").keydown(function(event) {
         // Allow only backspace and delete
         if ( event.keyCode == 46 || event.keyCode == 8 ) {

@@ -1,7 +1,7 @@
 //When Dom loads, execute script 
 document.addEventListener('DOMContentLoaded', function(){
     document.querySelector('#createAccount').addEventListener('click', function(){
-        if(localStorage.getItem('inputedDataStatus') == "Good"){
+        if(localStorage.getItem('inputedDataStatus') !== "Good"){
             //declare firestore database
             const db = firebase.firestore();
             const settings = {/* your settings... */ timestampsInSnapshots: true};
@@ -17,8 +17,11 @@ document.addEventListener('DOMContentLoaded', function(){
             const cvv = document.querySelector('#cvv');
             const  cardHoldersName = document.querySelector('#accountName');
             const password = document.querySelector('#passwordConfirm');
+            const selectedWork = document.querySelector('#formSelect');
+            const selectedCard = document.querySelector('#cardSelect');
             /*********Getting the value of workType*************/
             var workOptions = {
+                 0 : "Non work selected",
                  1 : "Shop owner",
                  2 : "Start up founder/Co-founder",
                  3 : "Freelancer",
@@ -26,27 +29,19 @@ document.addEventListener('DOMContentLoaded', function(){
                  5 : "Employee of a company",
                  6 : "Not yet working"
             }
-            //Getting the value of what was selected
-            //initialize materialize plugin for getting selected card type
-            var workInstance = M.FormSelect.getInstance(document.querySelector('#formSelect'));
-            var card = workInstance.getSelectedValues(); //get arrays of selected work
-            var selectedWork = card[0];//get value of selected work from array
-            const workType = workOptions[selectedWork]; //Gets the value for the type of job selected
             /************Getting the value of cardType **************/
             var cardOptions = {
+                0 : "No card selected",
                 1 : "Mastercard",
                 2 : "Visa"
             }
-            var cardInstance = M.FormSelect.getInstance(document.querySelector('#cardSelect'));
-            var card = cardInstance.getSelectedValues(); //get arrays of selected bank
-            var selectedCard = card[0];//get value of selected bank from array
-            const cardType = cardOptions[selectedCard]; //Gets the value for the type of bank selected*/
+            console.log(cardOptions[selectedCard.value]);
             // add data to database
-            db.collection("workUser").add({
+           /* db.collection("workUser").add({
                 fullname: fullname.value,
                 email: email.value,
                 mobileNo: mobileNo.value,
-                workType: workType,
+                workType: workOptions[selectedWork.value],
                 monthlySavings: monthlySavings.value,
                 cardType: cardType,
                 cardNumber: cardNumber.value,
@@ -60,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
-            });
+            });*/
         }
         else{
             //Do nothing
