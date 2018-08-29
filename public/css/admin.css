@@ -1,0 +1,21 @@
+body{
+    background: #ECEFF1;
+}
+.container{
+    margin-top: 3em!important;
+}
+.userImage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+}
+.userImage img{
+    height: 100%!important;
+    width: 100%!important;
+}
+@media only screen and (max-width: 600px){
+    .userImage{
+        height: 100px;
+    }
+}
