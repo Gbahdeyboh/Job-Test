@@ -16,6 +16,15 @@ body{
 }
 @media only screen and (max-width: 600px){
     .userImage{
-        height: 100px;
+        height: 100px!important;
     }
+    .userBody{
+        height: 100px!important;
+    }
+}
+.userBody{
+    height: 140px;
+}
+.userBody h4{
+    font-weight: 600;
 }
