@@ -21,10 +21,41 @@ body{
     .userBody{
         height: 100px!important;
     }
+    .userBtn{
+        height: 100px!important;
+        line-height: 40px!important;
+    }
+    .userBtn input{
+        width: 30px;
+        font-size: 5px!important;
+    }
+    #charge{
+        color: white!important;
+    }
+    .smallBtn{
+        border-top: 1px solid lightgrey;
+        margin-top: 5px;
+        padding-top: 15px!important;
+    }
+    .container .row{
+        width: 95%;
+    }
+    .sm{
+        line-height: 100px;
+    }
 }
 .userBody{
     height: 140px;
+    padding-left: 1em;
 }
 .userBody h4{
     font-weight: 600;
+}
+.userBtn{
+    height: 140px;
+    line-height: 60px;
+    border-left: 1px solid lightgrey; 
+}
+.userBtn input{
+    color: white;
 }
