@@ -33,4 +33,39 @@ db.collection('workUser').get().then(fetchData => {
     })
 }).catch(err => {
     console.log("Error fetching data : ", error);
-})
+});
+
+
+
+    const API_publicKey = "FLWPUBK-90d0372aa025bdfab6050c9b7b11d92d-X";
+
+    function payWithRave(){
+        var x = getpaidSetup({
+            PBFPubKey: API_publicKey,
+            customer_email: "gbahdeybohbello@gmail.com",
+            amount: 2000,
+            customer_phone: "08133282428",
+            currency: "NGN",
+            payment_method: "both",
+            txref: "rave-123456",
+            meta: [{
+                metaname: "flightID",
+                metavalue: "AP1234"
+            }],
+            onclose: function() {},
+            callback: function(response) {
+                var txref = response.tx.txRef; // collect flwRef returned and pass to a 					server page to complete status check.
+                console.log("This is the response returned after a charge", response);
+                if (
+                    response.tx.chargeResponseCode == "00" ||
+                    response.tx.chargeResponseCode == "0"
+                ) {
+                    // redirect to a success page
+                } else {
+                    // redirect to a failure page.
+                }//<ADD YOUR PUBLIC KEY HERE>
+
+                x.close(); // use this to close the modal immediately after payment.
+            }
+        });
+    }
