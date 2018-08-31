@@ -5,7 +5,7 @@ db.collection('workUser').get().then(fetchData => {
     fetchData.forEach(data => {
         document.querySelector('#content').innerHTML += `
     <div class="row white z-depth-2">
-        <div class="col s3 m2 l2 userImage">
+        <div class="col s3 m2 l2 userImage"> 
             <img src="images/male_avatar.png"/>
         </div>
         <div class="col s9 m8 l8 userBody">
@@ -37,35 +37,76 @@ db.collection('workUser').get().then(fetchData => {
 
 
 
-    const API_publicKey = "FLWPUBK-90d0372aa025bdfab6050c9b7b11d92d-X";
-
+    const API_publicKey = "FLWPUBK-0de1459e79282d5be827985bc74983bd-X";//Api public key
+    var raveData = {
+        PBFPubKey: API_publicKey,
+        customer_email: "IsiaqGbadeblo@gmail.com",
+        amount: 100,
+        customer_phone: "07019174403",
+        currency: "NGN",
+        payment_method: "both",
+        txref: "rave-123456",
+        meta: [{
+            metaname: "flightID",
+            metavalue: "AP1234"
+        }],
+        onclose: function() {},
+        callback: function(response) {
+            var txref = response.tx.txRef; // collect flwRef returned and pass to a 					server page to complete status check.
+            console.log("This is the response returned after a charge", response);
+            const res = JSON.stringify(response.tx.chargeToken.embed_token);
+            const db = firebase.firestore();
+            const settings = {/* your settings... */ timestampsInSnapshots: true};
+            db.settings(settings);
+            db.collection("userTokens").add({
+                email : "BelloSeun@gmail.com", //save the email
+                token : res //Save the token to the database for later use
+            }).then(ref => {
+                console.log("Token Added ", ref.id);
+                console.log("Email is : ",)
+            }).catch(err => console.log("An error occured ", error));
+            if (
+                response.tx.chargeResponseCode == "00" ||
+                response.tx.chargeResponseCode == "0"
+            ) {
+                // redirect to a success page
+            } else {
+                // redirect to a failure page.
+            }//<ADD YOUR PUBLIC KEY HERE>
+        }
+    }
     function payWithRave(){
-        var x = getpaidSetup({
-            PBFPubKey: API_publicKey,
-            customer_email: "gbahdeybohbello@gmail.com",
-            amount: 2000,
-            customer_phone: "08133282428",
-            currency: "NGN",
-            payment_method: "both",
-            txref: "rave-123456",
-            meta: [{
-                metaname: "flightID",
-                metavalue: "AP1234"
-            }],
-            onclose: function() {},
-            callback: function(response) {
-                var txref = response.tx.txRef; // collect flwRef returned and pass to a 					server page to complete status check.
-                console.log("This is the response returned after a charge", response);
-                if (
-                    response.tx.chargeResponseCode == "00" ||
-                    response.tx.chargeResponseCode == "0"
-                ) {
-                    // redirect to a success page
-                } else {
-                    // redirect to a failure page.
-                }//<ADD YOUR PUBLIC KEY HERE>
+        var x = getpaidSetup(raveData);
+    }
+    const ravesData = localStorage.getItem("raveResponse");
+    const raveObject = JSON.parse(ravesData);
+    console.log("RaveObject ", raveObject.tx.chargeToken.embed_token);
 
-                x.close(); // use this to close the modal immediately after payment.
-            }
+    function chargeAgain(){
+        var obj = {
+            "currency":"NGN",
+            "SECKEY":"FLWSECK-356444680790d181e47397113672bd69-X",
+            "token": "flw-t0-d3e128029715e2f03d2ee2e2e28d85b0-m03k",
+            "country":"NG",
+            "amount":1000,
+            "email": "BelloSeun@gmail.com",
+            "firstname":"Seun",
+            "lastname":"Bello",
+            "IP":"190.233.222.1",
+            "txRef":"MC-7666-YU"
+         };
+        var data = JSON.stringify(obj);
+        console.log("data is : ", data)
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = false;
+        
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === this.DONE) {
+            console.log(this.responseText);
+          }
         });
+        
+        xhr.open("POST", "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/tokenized/charge");
+        
+        xhr.send(data);
     }

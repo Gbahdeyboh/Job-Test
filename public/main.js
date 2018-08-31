@@ -1,6 +1,6 @@
 //Show Loading animation when page loads
 document.addEventListener('DOMContentLoaded', function(){
-    localStorage.clear();
+    //localStorage.clear();
     const overlay = document.querySelector('.pageOverlay');
     const overlayContent = document.querySelector('.overlayContent');
     const loadText = document.querySelector('#loadText');

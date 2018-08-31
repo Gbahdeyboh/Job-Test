@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
             const fullname = document.querySelector('#fullname');
             const email = document.querySelector('#email');
             const mobileNo = document.querySelector('#mobile');
-            const monthlySavings = document.querySelector('#monthlySavings');
+            const monthlySavings = document.querySelector('#monthlySavings'); 
             //const cardType = document.querySelector('#fullname');
             const cardNumber = document.querySelector('#cardNumber');
             const expiryDate = document.querySelector('#expDate');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 expiryDate: expiryDate.value,
                 cvv: cvv.value,
                 cardHoldersName: cardHoldersName.value,
-                password: password.value,
+                password: password.value
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id)
