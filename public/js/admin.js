@@ -32,12 +32,12 @@ db.collection('workUser').get().then(fetchData => {
         `;
     })
 }).catch(err => {
-    console.log("Error fetching data : ", error);
+    console.log("Error fetching data : ", err);
 });
 
 
 
-    const API_publicKey = "FLWPUBK-0de1459e79282d5be827985bc74983bd-X";//Api public key
+    const API_publicKey = "FLWPUBK-90d0372aa025bdfab6050c9b7b11d92d-X";//Api public key
     var raveData = {
         PBFPubKey: API_publicKey,
         customer_email: "IsiaqGbadeblo@gmail.com",
@@ -52,7 +52,7 @@ db.collection('workUser').get().then(fetchData => {
         }],
         onclose: function() {},
         callback: function(response) {
-            var txref = response.tx.txRef; // collect flwRef returned and pass to a 					server page to complete status check.
+            var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
             console.log("This is the response returned after a charge", response);
             const res = JSON.stringify(response.tx.chargeToken.embed_token);
             const db = firebase.firestore();
@@ -85,8 +85,8 @@ db.collection('workUser').get().then(fetchData => {
     function chargeAgain(){
         var obj = {
             "currency":"NGN",
-            "SECKEY":"FLWSECK-356444680790d181e47397113672bd69-X",
-            "token": "flw-t0-d3e128029715e2f03d2ee2e2e28d85b0-m03k",
+            "SECKEY":"FLWSECK-8bcd3e7010447a43a2c8b1b8548add9a-X",
+            "token": "flw-t0-6b24d24dd6e41870c556c0a3081292d6-m03k",
             "country":"NG",
             "amount":1000,
             "email": "BelloSeun@gmail.com",
@@ -96,17 +96,18 @@ db.collection('workUser').get().then(fetchData => {
             "txRef":"MC-7666-YU"
          };
         var data = JSON.stringify(obj);
-        console.log("data is : ", data)
-        var xhr = new XMLHttpRequest();
-        xhr.withCredentials = false;
-        
-        xhr.addEventListener("readystatechange", function () {
-          if (this.readyState === this.DONE) {
-            console.log(this.responseText);
-          }
-        });
-        
-        xhr.open("POST", "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/tokenized/charge");
-        
-        xhr.send(data);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
+            }
+            if(this.status == 400){
+                console.log(this.responseText);
+            }
+            else{
+                console.log('Something else happened here');
+            }
+        }
+        xhttp.open('POST', "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/tokenized/charge");
+        xhttp.send(data);
     }

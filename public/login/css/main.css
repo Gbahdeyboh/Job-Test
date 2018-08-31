@@ -1,0 +1,63 @@
+body{
+	background: #ECEFF1;
+}
+.btn, .btn-large {
+    text-decoration: none;
+    color: #fff;
+    background-color: #4169e1;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+}
+.btn:hover, .btn-large:hover{
+	background: #5c82f3;
+} 
+[type="checkbox"]+label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 1rem;
+}
+.input-field label {
+    color: lightgrey;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.75rem;
+    font-size: 1rem;
+    cursor: text;
+}
+[type="checkbox"]:checked+label:before {
+    top: -4px;
+    left: -3px;
+    width: 12px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #4169e1;
+    border-bottom: 2px solid #4169e1;
+}
+.input-field label{
+    color: lightgrey!important;
+}
+.input-field input[type=text]:focus + label {
+  color: #4169e1!important;
+}
+.input-field input[type=text]:focus ~ .mdi-social-person-outline {
+  color: #4169e1!important;
+  font-size: 3em;
+}
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #4169e1!important;
+  box-shadow: 0 1px 0 0 #4169e1!important;
+}
+.input-field input[type=password]:focus + label {
+  color: #4169e1!important;
+}
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #4169e1!important;
+  box-shadow: 0 1px 0 0 #4169e1!important;
+}
