@@ -48,7 +48,15 @@
                 password: password.value
             })
             .then(function(docRef) {
-                console.log("Document written with ID: ", docRef.id)
+                console.log("Document written with ID: ", docRef.id);
+                //Create user with firebase auth
+                firebase.auth().createUserWithEmailAndPassword(email.value, password.value).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log("Error ", errorCode, " : ", errorMessage);
+                    // ...
+                  });
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);

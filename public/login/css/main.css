@@ -61,3 +61,7 @@ body{
   border-bottom: 1px solid #4169e1!important;
   box-shadow: 0 1px 0 0 #4169e1!important;
 }
+#error{
+  color: #f31d1d;
+  display: none;
+}

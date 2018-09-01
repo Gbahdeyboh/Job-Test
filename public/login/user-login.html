@@ -15,6 +15,22 @@
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="all">
   <link rel="stylesheet" type="text/css" href="css/main.css" media="all">
   
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+  <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+  <script>
+  // Initialize Firebase 
+  var config = {
+      apiKey: "AIzaSyD_1-yC7PL9kfhp06iRygTY1VEnfM37Tr0",
+      authDomain: "debo-d791b.firebaseapp.com",
+      databaseURL: "https://debo-d791b.firebaseio.com",
+      projectId: "debo-d791b",
+      storageBucket: "debo-d791b.appspot.com",
+      messagingSenderId: "121504974373"
+  };
+  firebase.initializeApp(config);
+    </script>
 </head>
 
 <body>
@@ -36,12 +52,13 @@
             <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login"><!--Logo Here -->
             <p class="center login-form-text">Sign in to {Company}</p>
           </div>
+          <div id="error" class="center-align">Invalid username or password</div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix" id="userIcon"></i>
-            <input id="username" type="text">
-            <label for="username" class="center-align">Username</label>
+            <input id="email" type="text">
+            <label for="email" class="center-align">Email</label>
           </div>
         </div>
         <div class="row margin">
@@ -59,12 +76,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <a href="#" class="btn waves-effect waves-light col s12">Login</a>
+            <button class="btn waves-effect waves-light col s12" id="login">Login</button>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="#">Register Now!</a></p>
+            <p class="margin medium-small"><a href="../index.html">Register Now!</a></p>
           </div>
           <div class="input-field col s6 m6 l6">
               <p class="margin right-align medium-small"><a href="#">Forgot password ?</a></p>
