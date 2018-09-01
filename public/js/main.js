@@ -119,7 +119,7 @@ function validateInputs(){
                     if(email.value == data.data().email){
                         email.style.borderBottomColor = "red";
                         emailError.innerHTML = "Email already exist";
-                        emailError.style.display = " block";
+                        emailError.style.display = " block"; 
                     }
                     else if(email.value == ""){
                         email.style.borderBottomColor = "red";
@@ -166,6 +166,9 @@ function validateInputs(){
                         const overlayContent = document.querySelector('.overlayContent');
                         overlay.style.display = "block";
                         overlayContent.style.display = "flex";
+                        setTimeout(function(){
+                            window.location.assign('homepage.html');
+                        }, 3000);
                     },
                     callback: function(response) {
                         var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.

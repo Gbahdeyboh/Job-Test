@@ -50,7 +50,9 @@
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
                 //Create user with firebase auth
-                firebase.auth().createUserWithEmailAndPassword(email.value, password.value).catch(function(error) {
+                firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then(function(task){
+                    //Do something here
+                }).catch(function(error) {
                     // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
