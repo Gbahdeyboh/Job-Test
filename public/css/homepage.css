@@ -1,0 +1,62 @@
+:root{
+    --red : #d50000;;
+    --blue: #0c50e8;
+    --lightblue: #4177f1;
+}
+body{
+    font-family: 'LatoLatinWeb', 'LatoWeb', 'Lato', sans-serif;
+    background: #ECEFF1;
+}
+#head{
+    height: 60px;
+    box-sizing: border-box;
+}
+#companyLogo{
+    color: var(--blue);
+}
+.user{
+    box-sizing: border-box;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.user:hover{
+    background: lightgrey;
+    color: #FFFFFF;
+}
+.user:hover #usersName{
+    color: #FFFFFF
+}
+#usersName{
+    font-size: 1.4em;
+    color: lightgrey;
+}
+.user:hover #logout{
+    display: flex;
+}
+#logout{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 4em;
+    background: white;
+    width: 150px;
+    height: 50px;
+    color: grey;
+    animation: 1s show linear;
+}
+@keyframes show{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+#logout:hover{
+    display: flex;
+    cursor: pointer;
+}

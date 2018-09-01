@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Page Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="all" href="css/admin.css" />
+        <link rel="stylesheet" type="text/css" href="css/homepage.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/Lato/latofonts.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/icons/icon_set_1.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/icons/icon_set_2.css" />
@@ -15,6 +15,7 @@
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></Script>
         <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+        <script src="js/homepage.js"></script>
         <script>
     // Initialize Firebase
     var config = {
@@ -29,15 +30,19 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-    <script type="text/javascript" language="javascript" src="js/admin.js"></script>
     <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 </head>
 <body>
-    <div class="container" id="content">
-        <!--All registered users are loaded here-->
-    </div>
-    <br /><br />
-    <div class="center"><input type="button" value="pay" onclick="payWithRave()" class="btn"/></div>
-    <br /><div class="center"><input type="button" value="Charge Again" onclick="chargeAgain()" class="btn"/></div>
+    <header>
+        <div class="row white z-depth-2" id="head">
+            <div class="col s6 m2 l2" id="companyLogo"><h5>{Company}</h5></div>
+            <div class="col m8 l7 hide-on-small-only"></div>
+            <div class="col s6 m3 l3 user">
+                <span id="usersName">Bello Gbadebo</span>&nbsp;
+                <i class="fas fa-caret-down"></i>
+                <div id="logout" class="z-depth-3">Logout</div>
+            </div>
+        </div>
+    </header>
 </body>
 </html>
