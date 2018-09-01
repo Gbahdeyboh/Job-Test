@@ -1,7 +1,5 @@
-//When Dom loads, execute script 
-document.addEventListener('DOMContentLoaded', function(){
-    document.querySelector('#createAccount').addEventListener('click', function(){
-        if(localStorage.getItem('inputedDataStatus') == "Good"){
+
+        function createUser(){
             //declare firestore database
             const db = firebase.firestore();
             const settings = {/* your settings... */ timestampsInSnapshots: true};
@@ -56,9 +54,3 @@ document.addEventListener('DOMContentLoaded', function(){
                 console.error("Error adding document: ", error);
             });
         }
-        else{
-            //Do nothing
-            console.log("An Error Occured, some data where not properly inputted")
-        }
-    });
-});

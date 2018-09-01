@@ -111,6 +111,26 @@ function validateInputs(){
         if(cardSelect.value == 0){ //check if selected value is a number
             document.querySelector('#cardTypeError').style.display = "block"; //display error if no bank was selected
         }
+            const db = firebase.firestore();
+            const settings = {/* your settings... */ timestampsInSnapshots: true};
+            db.settings(settings);
+            db.collection('workUser').get().then(fetchData => {
+                fetchData.forEach(data => {
+                    if(email.value == data.data().email){
+                        email.style.borderBottomColor = "red";
+                        emailError.innerHTML = "Email already exist";
+                        emailError.style.display = " block";
+                    }
+                    else if(email.value == ""){
+                        email.style.borderBottomColor = "red";
+                        emailError.innerHTML = "Enter Email";
+                        emailError.style.display = " block";
+                    }
+                });
+            }).catch(err => {
+                console.log("Something went wrong :", err);
+            });
+        ///check if user has not been registered before
         //when all fields are filled out
         if(fullname.value !== "" && email.value !== "" && password.value !== "" && expDate.value !== "" && cvv.value !== "" && accountName.value !== "" &&
         passwordConfirm.value !== "" && monthlySavings.value !== "" && cardNumber.value !== "" && password.value == passwordConfirm.value){
@@ -126,12 +146,58 @@ function validateInputs(){
                 passwordConfirmError.innerHTML = "Password mismatched";
             }
             else{
-                localStorage.setItem('inputedDataStatus', 'Good');
-                //display loading animation
-                const overlay = document.querySelector('.pageOverlay');
-                const overlayContent = document.querySelector('.overlayContent');
-                overlay.style.display = "block";
-                overlayContent.style.display = "flex";
+                //Make sure user makes an initial payment before Creating an account for user
+                const API_publicKey = "FLWPUBK-90d0372aa025bdfab6050c9b7b11d92d-X";//Api public key
+                var raveData = {
+                    PBFPubKey: API_publicKey,
+                    customer_email: email.value,
+                    amount: monthlySavings.value,
+                    customer_phone: mobile.value,
+                    currency: "NGN",
+                    payment_method: "both",
+                    txref: "rave-123456",
+                    meta: [{
+                        metaname: "Initial Payment",
+                        metavalue: "AP1234"
+                    }],
+                    onclose: function() {
+                        //display loading animation
+                        const overlay = document.querySelector('.pageOverlay');
+                        const overlayContent = document.querySelector('.overlayContent');
+                        overlay.style.display = "block";
+                        overlayContent.style.display = "flex";
+                    },
+                    callback: function(response) {
+                        var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
+                        console.log("This is the response returned after a charge", response);
+                        const res = JSON.stringify(response.tx.chargeToken.embed_token);
+                        const db = firebase.firestore();
+                        const settings = {/* your settings... */ timestampsInSnapshots: true};
+                        db.settings(settings);
+                        db.collection("userTokens").add({
+                            email : email.value, //save the email
+                            token : res //Saves the token to the database for later use
+                        }).then(ref => {
+                            console.log("Token Added ", ref.id);
+                            console.log("Email is : ", email.value)
+                            console.log("Token is : ", res);
+                        }).catch(err => console.log("An error occured ", error));
+                        if (
+                            response.tx.chargeResponseCode == "00" ||
+                            response.tx.chargeResponseCode == "0"
+                        ) {
+                            createUser(); //create an acount for customer
+                            // When payment is succeeful
+                        } else {
+                            console.log("Payment failed, did not create account");
+                            // redirect to a failure page.
+                        }
+                    }
+                }
+                function payWithRave(){
+                    var x = getpaidSetup(raveData);
+                };
+                payWithRave(); //make payment
             }
         })();
     }

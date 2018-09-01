@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+    <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
     <script>
     // Initialize Firebase 
     var config = {
@@ -28,12 +29,11 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/query.js"></script>
-
+    
     <style media="screen">
-      body { background: #ECEFF1;}    
-    </style>
+        body { background: #ECEFF1;}    
+        </style>
   </head>
   <body>
     <!-- main sign up body starts here-->
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="row">
-                          <!--phone number input field-->
+                            <!--phone number input field-->
                           <div class="col s12 m6 l6 input-field">
                               <input type="number" id="mobile" validate="validate" placeholder="+234"/>
                               <label for="mobile">Phone no</label>
@@ -116,10 +116,10 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m6 l6 input-field">
-                                <input type="number" id="monthlySavings" placeholder="How much do you want to save monthly?">
+                                <input type="text" id="monthlySavings" placeholder="How much do you want to save monthly?" maxlength="6">
                                 <label for="monthlySavings">Monthly savings</label>
                                 <div class="col s12 m12 l12" id="monthlySavingsError">Enter monthly savings</div>
-                              </div>
+                            </div>
                               <div class="col s12 m6 l6">
                                   <select id="cardSelect" class="browser-default">
                                       <option value="0">What type of card are you paying with?</option>
@@ -128,7 +128,7 @@
                                   </select>
                                   <div class="col s12 m12 l12" id="cardTypeError">Enter card type</div>
                               </div>
-                        </div>
+                            </div>
                         <div class="row">
                             <div class="col s12 m6 l6 input-field">
                                 <input type="text" id="cardNumber" validate="validate" onkeyup="appendSpace(this.value)" placeholder="1234 5678 4321 8765" maxlength="19"/>
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="row input-field">
-                          <input type="text" id="accountName" />
+                            <input type="text" id="accountName" />
                           <label for="accountName" >Card holders name</label>
                           <div id="cardHolderError">Enter the card holders name</div>
                         </div>
@@ -160,10 +160,10 @@
                             </div>
                             <div class="col s10 m5 l5 input-field">
                                 <!--passwordConfirm input field-->
-                                    <input type="password" id="passwordConfirm" />
+                                <input type="password" id="passwordConfirm" />
                                     <label for="passwordConfirm">Confirm Password</label>
                                     <div class="col s12 m12 l12" id="passwordConfirmError">Re-enter password</div>
-                            </div>
+                                </div>
                             <div class="col s2 m2 l2 eye-open" id="eyeOpen" onclick="showPass()">
                                 <i class="fas fa-eye fa-2x"></i>
                             </div>
@@ -196,21 +196,33 @@
     <div class="overlayContent">
         <div class="text-center">
             <div class="animationload">
-              <div class="osahanloading"></div>
+                <div class="osahanloading"></div>
             </div>
             <h4 id="loadText"></h4>
         </div>
     </div>
     <script>
-       /* document.addEventListener('DOMContentLoaded', function() {
+        /* document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, options);
-  });*/
+});*/
 
   // Or with jQuery
 
   $(document).ready(function(){
     $("#cardNumber").keydown(function(event) {
+        // Allow only backspace and delete
+        if ( event.keyCode == 46 || event.keyCode == 8 ) {
+            // let it happen, don't do anything
+        }
+        else {
+            // Ensure that it is a number and stop the keypress
+            if (event.keyCode < 48 || event.keyCode > 57 ) {
+                event.preventDefault(); 
+            }   
+        }
+    });
+    $("#monthlySavings").keydown(function(event) {
         // Allow only backspace and delete
         if ( event.keyCode == 46 || event.keyCode == 8 ) {
             // let it happen, don't do anything
@@ -247,6 +259,8 @@
         }
     });
   });
-    </script>
+  </script>
+  <script src="js/main.js"></script>
   </body>
-</html>
+  </html>
+  

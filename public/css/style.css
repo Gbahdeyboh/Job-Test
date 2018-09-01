@@ -3,7 +3,7 @@
     --blue: #0c50e8;
     --lightblue: #4177f1;
     --yellow: #FBC02D;
-    --lightyellow: #f9d67f;
+    --lightblue: #f9d67f;
     --facebookBlue: #4267B2;
     --twitterblue: #1DA1F2;
 }
@@ -107,7 +107,7 @@ body{
     padding-top: 0.2em;
 }
 .companyName h5{
-    color: var(--yellow);
+    color: var(--blue);
 }
 .loginTo{
     height: 60%;
@@ -124,96 +124,96 @@ body{
   }
   /* label focus color */
   .input-field input[type=text]:focus + label {
-    color: var(--yellow)!important;
+    color: var(--blue)!important;
   }
   /* label underline focus color */
   .input-field input[type=text]:focus {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   /* valid color */
   .input-field input[type=text].valid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   /* invalid color */
   .input-field input[type=text].invalid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   /* icon prefix focus color */
   .input-field .prefix.active {
-    color: var(--yellow)!important;
+    color: var(--blue)!important;
   }
   /*Email input layout*/
   .input-field input[type=email]:focus + label {
-    color: var(--yellow)!important;
+    color: var(--blue)!important;
   }
   .input-field input[type=email]:focus {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field input[type=email].valid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field input[type=email].invalid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   /*Number input layout*/
   .input-field input[type=number]:focus + label {
-    color: var(--yellow)!important;
+    color: var(--blue)!important;
   }
   .input-field input[type=number]:focus {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field input[type=number].valid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field input[type=number].invalid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field .prefix.active {
-    color: var(--yellow)!important;
+    color: var(--blue)!important;
   }
   /*Password input layout*/
   .input-field input[type=password]:focus + label {
-    color: var(--yellow)!important;
+    color: var(--blue)!important;
   }
   .input-field input[type=password]:focus {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field input[type=password].valid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field input[type=password].invalid {
-    border-bottom: 1px solid var(--yellow)!important;
-    box-shadow: 0 1px 0 0 var(--yellow)!important;
+    border-bottom: 1px solid var(--blue)!important;
+    box-shadow: 0 1px 0 0 var(--blue)!important;
   }
   .input-field .prefix.active {
-    color: var(--yellow)!important;
+    color: var(--blue)!important;
   }
   #forgotPassword{
       text-align: left;
       color: var(--red);
   }
   .login{
-      background: var(--lightyellow)!important;
+      background: var(--lightblue)!important;
   }
   .login:hover{
-      background: var(--yellow)!important;
+      background: var(--blue)!important;
   }
   .createAccount a{
       padding-top: 0.3em;
       display: flex;
       vertical-align: center;
-      color: var(--yellow)!important;
+      color: var(--blue)!important;
   }
   .loginFacebook, .loginTwitter, .signupFacebook, .signupTwitter{
       background: var(--facebookBlue);
@@ -298,7 +298,7 @@ body{
       height: 130px;
   }
   #companyName h5{
-      color: var(--yellow);
+      color: var(--blue);
   }
   #headerText{
       font-size: 1.5em;
@@ -317,13 +317,13 @@ body{
       display: none;
   }
   #createAccount{
-      background: var(--yellow);
+      background: var(--blue);
   }
   #createAccount:hover{
-      background: var(--lightyellow);
+      background: var(--lightblue);
   }
   #signinInstead{
-      color: var(--yellow)!important;
+      color: var(--blue)!important;
   }
   #fullNameError, #emailError, #mobileError, #monthlySavingsError, #workTypeError, #cardTypeError, #cardNumberError, #expDateError, #cvvError, #cardHolderError, #passwordError, #passwordConfirmError{
       color: var(--red)!important;
@@ -371,8 +371,6 @@ body{
         left: 0px;
         margin: 0px;
         padding: 0px;
-      }
-      .signupContent{
       }
   }
   /*Default loading animation*/
