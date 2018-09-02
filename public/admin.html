@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Page Title</title>
+        <title>Page Title</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="all" href="css/admin.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/Lato/latofonts.css" />
@@ -39,5 +39,26 @@
     <br /><br />
     <div class="center"><input type="button" value="pay" onclick="payWithRave()" class="btn"/></div>
     <br /><div class="center"><input type="button" value="Charge Again" onclick="chargeAgain()" class="btn"/></div>
+    <div id="pagePromptBody">
+        <div id="pagePrompt">
+            <div class="row">
+                <div class="col s10 m10 l10"><h4>Charge Customer</h4></div>
+                <div class="col s2 m2 l2" id="close" onclick="closeModal()">&times;</div>
+            </div>
+            <div class="row red lighten-4" id='warning'>
+                <div class="col s2 m2 l2 center-align" id="warningIcon">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2.5em;"></i>
+                </div>
+                <div class="col s10 m10 l10" id='prompt'>
+                    
+                </div>
+            </div><br /><br />
+            <div class="row" id="warningBtn">
+                <div class="btn waves-effect red" onclick="closeModal()">Cancel</div>
+                <div class="btn waves-effect" id="chargeCustomer">Charge</div>
+            </div>
+        </div>
+    </div>
+    <div id="pageOverlay"></div>
 </body>
 </html>

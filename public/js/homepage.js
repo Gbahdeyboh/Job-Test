@@ -1,22 +1,26 @@
 document.addEventListener('DOMContentLoaded', function(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            //if a user is signed in
-          console.log("signed in  ", user.email);
-          const db = firebase.firestore();
-          const settings = {/* your settings... */ timestampsInSnapshots: true};
-          db.settings(settings);
-          db.collection('workUser').where('email', '==', user.email).get().then(fetchData => {
-            fetchData.forEach(data => {
-                document.querySelector('#usersName').innerHTML = data.data().fullname;
+            console.log("Users email is ", user.email);
+            const userEmail = user.email;
+            const db = firebase.firestore();
+            const settings = {/* your settings... */ timestampsInSnapshots: true};
+            db.settings(settings);                        
+            db.collection('workUser').where('email', '==', userEmail)
+            .get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(data => {
+                    document.querySelector('#usersName').innerHTML = data.data().fullname;
+                    console.log(data.data().fullname);
+                });
+            }).catch(err => {
+                console.log("Error ", err.message);
             });
-        }).catch(err => {
-            console.log("Something went wrong :", err);
-        });
+          // User is signed in.
         } else {
-            //if no user is signed in
-           console.log("None signed in");
-           window.location.assign('login/user-login.html');
+          // No user is signed in.
+          console.log("no user is signed in");
+          window.location.assign('login/user-login.html');
         }
-      });   
+    });
 });

@@ -111,6 +111,7 @@ function validateInputs(){
         if(cardSelect.value == 0){ //check if selected value is a number
             document.querySelector('#cardTypeError').style.display = "block"; //display error if no bank was selected
         }
+        var emailValid; //to be later used to validate email
             const db = firebase.firestore();
             const settings = {/* your settings... */ timestampsInSnapshots: true};
             db.settings(settings);
@@ -120,6 +121,7 @@ function validateInputs(){
                         email.style.borderBottomColor = "red";
                         emailError.innerHTML = "Email already exist";
                         emailError.style.display = " block"; 
+                        emailValid = "emailExists";
                     }
                     else if(email.value == ""){
                         email.style.borderBottomColor = "red";
@@ -132,7 +134,7 @@ function validateInputs(){
             });
         ///check if user has not been registered before
         //when all fields are filled out
-        if(fullname.value !== "" && email.value !== "" && password.value !== "" && expDate.value !== "" && cvv.value !== "" && accountName.value !== "" &&
+        if(fullname.value !== "" && email.value !== "" && emailValid !== "emailExists" && password.value !== "" && expDate.value !== "" && cvv.value !== "" && accountName.value !== "" &&
         passwordConfirm.value !== "" && monthlySavings.value !== "" && cardNumber.value !== "" && password.value == passwordConfirm.value){
         return "NotEmpty"; //return a string when no field is left out
         }
@@ -189,8 +191,7 @@ function validateInputs(){
                             response.tx.chargeResponseCode == "00" ||
                             response.tx.chargeResponseCode == "0"
                         ) {
-                            createUser(); //create an acount for customer
-                            // When payment is succeeful
+                            createUser(); //create an acount for customer when payment is succeeful
                         } else {
                             console.log("Payment failed, did not create account");
                             // redirect to a failure page.

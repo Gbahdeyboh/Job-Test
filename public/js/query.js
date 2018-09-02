@@ -8,7 +8,7 @@
             const fullname = document.querySelector('#fullname');
             const email = document.querySelector('#email');
             const mobileNo = document.querySelector('#mobile');
-            const monthlySavings = document.querySelector('#monthlySavings'); 
+            const monthlySavings = document.querySelector('#monthlySavings');  
             //const cardType = document.querySelector('#fullname');
             const cardNumber = document.querySelector('#cardNumber');
             const expiryDate = document.querySelector('#expDate');
