@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const overlayContent = document.querySelector('.overlayContent');
     const loadText = document.querySelector('#loadText');
     overlay.style.display = "block";
-    overlayContent.style.display = "flex"; 
+    overlayContent.style.display = "flex";
     loadText.innerHTML = "Loading Please Wait ......";
     setTimeout(function(){
         overlay.style.display = "none";
@@ -163,7 +163,14 @@ function validateInputs(){
                         metavalue: "AP1234"
                     }],
                     onclose: function() {
-                        //Anything should happen when payment prompt close button is clicked
+                        //display loading animation
+                        const overlay = document.querySelector('.pageOverlay');
+                        const overlayContent = document.querySelector('.overlayContent');
+                        overlay.style.display = "block";
+                        overlayContent.style.display = "flex";
+                        setTimeout(function(){
+                            window.location.assign('homepage.html');
+                        }, 3000);
                     },
                     callback: function(response) {
                         var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
@@ -185,18 +192,8 @@ function validateInputs(){
                             response.tx.chargeResponseCode == "0"
                         ) {
                             createUser(); //create an acount for customer when payment is succeeful
-                            //display loading animation
-                            const overlay = document.querySelector('.pageOverlay');
-                            const overlayContent = document.querySelector('.overlayContent');
-                            overlay.style.display = "block";
-                            overlayContent.style.display = "flex";
-                            setTimeout(function(){
-                                window.location.assign('homepage.html');
-                            }, 3000);
                         } else {
-                            getPaidSetup(raveData).close();
                             console.log("Payment failed, did not create account");
-                            alert("Payment is unsuccessful");
                             // redirect to a failure page.
                         }
                     }
