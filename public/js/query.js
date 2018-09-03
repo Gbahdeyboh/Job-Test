@@ -7,7 +7,7 @@
             //declare all datas to be stroed in database
             const fullname = document.querySelector('#fullname');
             const email = document.querySelector('#email');
-            const mobileNo = document.querySelector('#mobile');
+            const mobileNo = document.querySelector('#mobile'); 
             const monthlySavings = document.querySelector('#monthlySavings');  
             //const cardType = document.querySelector('#fullname');
             const cardNumber = document.querySelector('#cardNumber');
