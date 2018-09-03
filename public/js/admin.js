@@ -37,50 +37,16 @@ db.collection('workUser').get().then(fetchData => {
     console.log("Error fetching data : ", err);
 });
 
-
-
-    /*const API_publicKey = "FLWPUBK-90d0372aa025bdfab6050c9b7b11d92d-X";//Api public key
-    var raveData = {
-        PBFPubKey: API_publicKey,
-        customer_email: "IsiaqGbadeblo@gmail.com",
-        amount: 100,
-        customer_phone: "07019174403",
-        currency: "NGN",
-        payment_method: "both",
-        txref: "rave-123456",
-        meta: [{
-            metaname: "flightID",
-            metavalue: "AP1234"
-        }],
-        onclose: function() {},
-        callback: function(response) {
-            var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
-            console.log("This is the response returned after a charge", response);
-            const res = JSON.stringify(response.tx.chargeToken.embed_token);
-            const db = firebase.firestore();
-            const settings = {timestampsInSnapshots: true};
-            db.settings(settings);
-            db.collection("userTokens").add({
-                email : "BelloSeun@gmail.com", //save the email
-                token : res //Save the token to the database for later use
-            }).then(ref => {
-                console.log("Token Added ", ref.id);
-                console.log("Email is : ",)
-            }).catch(err => console.log("An error occured ", error));
-            if (
-                response.tx.chargeResponseCode == "00" ||
-                response.tx.chargeResponseCode == "0"
-            ) {
-                // redirect to a success page
-            } else {
-                // redirect to a failure page.
-            }//<ADD YOUR PUBLIC KEY HERE>
-        }
-    }
-    function payWithRave(){
-        var x = getpaidSetup(raveData);
-    }*/ 
     function charge(){
+        //show Loader when charged button is clicked
+        const loader = document.querySelector('#pageLoading'); //page loader body
+        const loaderBody = document.querySelector('#pageLoadingOverlay'); //pages loader overlay
+        const success = document.querySelector("#success"); //successs icon
+        const waiting = document.querySelector("#waiting"); //waiting icon
+        const pagePromptBody = document.querySelector('#pagePromptBody'); //charge prompt body
+        const pageOverlay = document.querySelector('#pageOverlay'); // page overlay body
+        loader.style.display = "flex"; //show loader
+        loaderBody.style.display = "block"; //show loaders overlay
         const token = sessionStorage.getItem("token");
         const price = sessionStorage.getItem("price");
         const email = sessionStorage.getItem("email");
@@ -102,17 +68,29 @@ db.collection('workUser').get().then(fetchData => {
         var data = JSON.stringify(obj);
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
+            if(this.readyState == 4 && this.status == 200){ //when server responds okay
                 console.log(this.responseText);
-                var response = JSON.parse(this.responseText);
-                const newToken = response.data.chargeToken.embed_token; 
+                var response = JSON.parse(this.responseText); //store response as an object
+                const newToken = response.data.chargeToken.embed_token;  //get new toke from response
                 //if transaction was successful 
                 if(response.data.status == "successful" && response.data.chargeResponseCode == "00"){
-                    //Update new token to colloection
+                    //if transaction is successful
+                    //Update new token to collection
                     const db = firebase.firestore();
                     db.collection('userTokens').doc(doc).update({
                         token : newToken
                     });
+                    //Then show successful icon
+                    waiting.style.display = "none"; //close waiting loader
+                    success.style.display = "block"; //show success icon
+                    setTimeout(function(){
+                        loader.style.display ="none"; //close loader
+                        loaderBody.style.display ="none"; //close loader body
+                        success.style.display ="none"; //close success icon
+                        waiting.style.display ="none"; //close waiting 
+                        pagePromptBody.style.display ="none"; //close page prompt body 
+                        pageOverlay.style.display ="none"; //close page overlay body 
+                    }, 2000);
                 }
             }
             if(this.status == 400){
@@ -126,7 +104,6 @@ db.collection('workUser').get().then(fetchData => {
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(data);
     }
-    //DELETE EVERYTHING IN THE ABOVE COMMENT AFTER IMPLEMENTING PAYMENT
     function chargeAgain(val){
         const usersEmail = val.dataset.email; //Customer to charge email
         sessionStorage.setItem("email", usersEmail); //store email as a session Storage
@@ -176,40 +153,6 @@ db.collection('workUser').get().then(fetchData => {
         })
         .catch()
     }
-
-    
-    /*function chargesAgain(){
-        var obj = {
-            "currency":"NGN",
-            "SECKEY":"FLWSECK-8bcd3e7010447a43a2c8b1b8548add9a-X",
-            "token": 'flw-t0-cf78c4552c7e32505306e3806b59fda5-m03k',
-            "country":"NG",
-            "amount":100,
-            "email": "Solape@gmail.com",
-            "firstname":"Solape",
-            "lastname":"folawe",
-            "IP":"190.233.222.1",
-            "txRef":"MC-7666-YU"
-         };
-        var data = JSON.stringify(obj);
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                console.log(this.responseText);
-            }
-            if(this.status == 400){
-                const newToken = this.responseText;
-                console.log(this.responseText);
-            }
-            else{
-                console.log('Something else happened here');
-            }
-        }
-        xhttp.open('POST', "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/tokenized/charge");
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(data);
-    }*/
-
     //close the prompt modal
     function closeModal(){
         const modal = document.querySelector('#pagePromptBody'); //page modal

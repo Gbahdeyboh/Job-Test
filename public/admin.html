@@ -37,8 +37,6 @@
         <!--All registered users are loaded here-->
     </div>
     <br /><br />
-    <div class="center"><input type="button" value="pay" onclick="payWithRave()" class="btn"/></div>
-    <br /><div class="center"><input type="button" value="Charge Again" onclick="chargeAgain()" class="btn"/></div>
     <div id="pagePromptBody">
         <div id="pagePrompt">
             <div class="row">
@@ -58,6 +56,24 @@
                 <div class="btn waves-effect" id="chargeCustomer" onclick="charge()">Charge</div>
             </div>
         </div>
+        <div id="pageLoading" class="center-align">
+            <div class="row center-align proc" id="waiting">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                </div>
+                <h4>Processing Payment...</h4>
+            </div>
+            <div id="success"><i class="fas fa-check-circle fa-6x" id="successIcon"></i><h4>Payment Succesful</h4></div>
+        </div>
+        <div id="pageLoadingOverlay"></div>
     </div>
     <div id="pageOverlay"></div>
 </body>

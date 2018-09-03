@@ -24,3 +24,11 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 });
+function logOut(){
+    firebase.auth().signOut().then(function() {
+        console.log("signed out user");
+        window.location.assign('login/user-login.html');
+      }).catch(function(error) {
+        // An error happened.
+      });
+}

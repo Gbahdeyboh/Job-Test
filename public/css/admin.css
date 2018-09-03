@@ -80,6 +80,31 @@ body{
     border-radius: 2em;
     animation: anim .5s linear;
 }
+#pageLoading, #pageLoadingOverlay{
+    width: 80%;
+    position: fixed;
+    height: 300px;
+    background: #FFFFFF;
+    border-radius: 2em;
+}
+#pageLoading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    z-index: 2;
+    display: none;
+}
+#pageLoadingOverlay{
+    opacity: 0.8;
+    display: none;
+}
+#success{
+    display: none;
+}
+#successIcon{
+    color: #00e676;
+}
 @keyframes anim{
     from{
         transform: scale(0);
@@ -88,12 +113,12 @@ body{
     }
 }
 @media only screen and (min-width: 800px){
-    #pagePrompt{
+    #pagePrompt, #pageLoading, #pageLoadingOverlay{
         width: 600px;
     }
 }
 @media only screen and (max-width: 600px){
-    #pagePrompt{
+    #pagePrompt, #pageLoading, #pageLoadingOverlay{
         height: 390px;
         border-radius: 8px;
     }
