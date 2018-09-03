@@ -102,6 +102,9 @@ body{
 #success{
     display: none;
 }
+#paymentError{
+    display: none;
+}
 #successIcon{
     color: #00e676;
 }

@@ -42,12 +42,13 @@ db.collection('workUser').get().then(fetchData => {
         const loader = document.querySelector('#pageLoading'); //page loader body
         const loaderBody = document.querySelector('#pageLoadingOverlay'); //pages loader overlay
         const success = document.querySelector("#success"); //successs icon
+        const paymentError = document.querySelector('#paymentError'); //paymentError
         const waiting = document.querySelector("#waiting"); //waiting icon
         const pagePromptBody = document.querySelector('#pagePromptBody'); //charge prompt body
         const pageOverlay = document.querySelector('#pageOverlay'); // page overlay body
         loader.style.display = "flex"; //show loader
         loaderBody.style.display = "block"; //show loaders overlay
-        const token = JSON.parse(sessionStorage.getItem("token"));
+        const token = sessionStorage.getItem("token");
         const price = sessionStorage.getItem("price");
         const email = sessionStorage.getItem("email");
         const name = sessionStorage.getItem("name");
@@ -94,10 +95,19 @@ db.collection('workUser').get().then(fetchData => {
                 }
             }
             if(this.status == 400){
+                waiting.style.display = "none"; //close waiting loader
+                    success.style.display = "none"; //show success icon
+                    paymentError.style.display = "block"; //show paymentError Icon
+                    setTimeout(function(){
+                        loader.style.display ="none"; //close loader
+                        loaderBody.style.display ="none"; //close loader body
+                        success.style.display ="none"; //close success icon
+                        waiting.style.display ="none"; //close waiting 
+                        pagePromptBody.style.display ="none"; //close page prompt body 
+                        pageOverlay.style.display ="none"; //close page overlay body
+                        document.querySelector('#success').innerHTML = '';
+                    }, 2000);
                 console.log("Transaction complete", this.responseText);
-            }
-            else{
-                console.log('Something else happened here');
             }
         }
         xhttp.open('POST', "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/tokenized/charge");
