@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
@@ -84,16 +84,31 @@
             <p class="margin medium-small"><a href="../index.html">Register Now!</a></p>
           </div>
           <div class="input-field col s6 m6 l6">
-              <p class="margin right-align medium-small"><a href="#">Forgot password ?</a></p>
+              <p class="margin right-align medium-small"><a href="#" onclick="showResetPrompt()">Forgot password ?</a></p>
           </div>          
         </div>
 
       </form>
     </div>
   </div>
-
-
-
+ <div id="pageOverlay"></div>
+<div id="passwordResetBody">
+  <div id="passwordReset">
+    <div id="resetHead">Reset Your password</div><br /> 
+    <div class="grey-text"><h6>* Type in your email to reset your password</h6></div>
+    <div class="input-field">
+      <input type="text" id="resetEmail" />
+      <label for="resetEmail" id="resetLabel">Email</label>
+    </div>
+    <div id="inputError">* You must provide an email to reset password</div>
+    <br /><br />
+    <div class="row">
+      <div class="btn waves-effect center-align grey lighten-1" style="float: left;" onclick="closePrompt()">Cancel</div>
+      <div class="btn waves-effect center-align" style="float: right;" onclick="resetPrompt()">Reset</div>
+    </div>
+  </div>
+</div>
+<div id="successPop">A reset link has been sent to you</div>
   <!-- ================================================
     Scripts
     ================================================ -->

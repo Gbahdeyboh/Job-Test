@@ -3,7 +3,7 @@ const settings = {/* your settings... */ timestampsInSnapshots: true};
   db.settings(settings);
 db.collection('workUser').get().then(fetchData => {
     fetchData.docs.forEach(data => {
-        document.querySelector('#content').innerHTML += `
+        document.querySelector('#content').innerHTML += ` 
     <div class="row white z-depth-2">
         <div class="col s3 m2 l2 userImage"> 
             <img src="images/male_avatar.png"/>
@@ -84,6 +84,7 @@ db.collection('workUser').get().then(fetchData => {
                     //Then show successful icon
                     waiting.style.display = "none"; //close waiting loader
                     success.style.display = "block"; //show success icon
+                    paymentError.style.display = "none"; //show paymentError Icon
                     setTimeout(function(){
                         loader.style.display ="none"; //close loader
                         loaderBody.style.display ="none"; //close loader body

@@ -1,7 +1,7 @@
 
         function createUser(){
             //declare firestore database
-            const db = firebase.firestore();
+            const db = firebase.firestore(); 
             const settings = {/* your settings... */ timestampsInSnapshots: true};
             db.settings(settings);
             //declare all datas to be stroed in database
@@ -51,7 +51,15 @@
                 console.log("Document written with ID: ", docRef.id);
                 //Create user with firebase auth
                 firebase.auth().createUserWithEmailAndPassword(email.value, password.value).then(function(task){
-                    //Do something here
+                    //Send a verification email to created user
+                    var user = firebase.auth().currentUser;
+
+                    user.sendEmailVerification().then(function() {
+                      console.log('Verification email has been set');
+                    }).catch(function(error) {
+                      // An error happened.
+                      console.log('Something went wrong, email not sent');
+                    });
                 }).catch(function(error) {
                     // Handle Errors here.
                     var errorCode = error.code;
@@ -61,6 +69,6 @@
                   });
             })
             .catch(function(error) {
-                console.error("Error adding document: ", error);
+                console.error("Error creating account : ", error);
             });
         }

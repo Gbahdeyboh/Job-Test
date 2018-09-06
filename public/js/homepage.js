@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function(){
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function(user) { 
         if (user) {
+            console.log(user)
+            if(user.emailVerified == true){
+                document.querySelector('#verifyMessage').innerHTML = "Your email has been successfully verified";
+            }
+            else if(user.emailVerified == false){
+                document.querySelector('#verifyMessage').innerHTML = "You need to verify your email before proceeding";
+            }
             console.log("Users email is ", user.email);
             const userEmail = user.email;
             const db = firebase.firestore();
@@ -31,4 +38,16 @@ function logOut(){
       }).catch(function(error) {
         // An error happened.
       });
+}
+function verify(){
+    var auth = firebase.auth();
+    var emailAddress = "gbahdeybohbello@gmail.com";
+    
+    auth.sendPasswordResetEmail(emailAddress).then(function() {
+      // Email sent.
+      console.log("email sent");
+    }).catch(function(error) {
+      // An error happened.
+      console.log("email not sent");
+    });
 }
