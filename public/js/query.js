@@ -19,7 +19,7 @@
             const selectedCard = document.querySelector('#cardSelect');
             /*********Getting the value of workType*************/
             var workOptions = {
-                 0 : "Non work selected",
+                 0 : "No work selected",
                  1 : "Shop owner",
                  2 : "Start up founder/Co-founder",
                  3 : "Freelancer",

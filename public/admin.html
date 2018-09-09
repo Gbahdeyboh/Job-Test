@@ -57,7 +57,7 @@
             </div>
         </div>
         <div id="pageLoading" class="center-align">
-            <div class="row center-align proc" id="waiting">
+            <div class="row center-align">
                 <div class="preloader-wrapper big active">
                     <div class="spinner-layer spinner-blue-only">
                       <div class="circle-clipper left">
@@ -71,11 +71,34 @@
                 </div>
                 <h4>Processing Payment...</h4>
             </div>
-            <div id="success"><i class="fas fa-check-circle fa-6x" id="successIcon"></i><h4>Payment Succesful</h4></div>
-            <div id="paymentError"><i class="fas fa-ban fa-6x" style="color:red;"></i><h4 style="color:red;">Payment failed!!!!</h4></div>
+        </div>
+        <div id="failedTransaction" class="center-align">
+            <i class="fas fa-ban fa-6x" style="color:red;"></i><h4 style="color:red;">Payment failed!!!!</h4>
+            <br /><br /><br />
+            <div class="btn waves-effect red lighten" onclick="closeModal()">Close</div>
+        </div>
+        <div id="paymentSuccess" class="center-align">
+            <i class="fas fa-check-circle fa-6x" id="successIcon"></i><h4>Payment Succesful</h4>
+            <br /><br /><br />
+            <div class="btn waves-effect red lighten" onclick="closeModal()">Close</div>
         </div>
         <div id="pageLoadingOverlay"></div>
     </div>
     <div id="pageOverlay"></div>
+    <div id="defaultLoaderBody">
+        <div class="row center-align">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

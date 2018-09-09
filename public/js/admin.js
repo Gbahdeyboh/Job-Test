@@ -2,6 +2,9 @@ const db = firebase.firestore();
 const settings = {/* your settings... */ timestampsInSnapshots: true};
   db.settings(settings);
 db.collection('workUser').get().then(fetchData => {
+    //close defau;t loaders
+    const defaultLoader = document.querySelector('#defaultLoaderBody');
+    defaultLoader.style.display = "none";
     fetchData.docs.forEach(data => {
         document.querySelector('#content').innerHTML += ` 
     <div class="row white z-depth-2">
@@ -41,9 +44,8 @@ db.collection('workUser').get().then(fetchData => {
         //show Loader when charged button is clicked
         const loader = document.querySelector('#pageLoading'); //page loader body
         const loaderBody = document.querySelector('#pageLoadingOverlay'); //pages loader overlay
-        const success = document.querySelector("#success"); //successs icon
-        const paymentError = document.querySelector('#paymentError'); //paymentError
-        const waiting = document.querySelector("#waiting"); //waiting icon
+        const paymentError = document.querySelector('#failedTransaction'); //paymentError
+        const paymentSuccess = document.querySelector('#paymentSuccess'); //payment success
         const pagePromptBody = document.querySelector('#pagePromptBody'); //charge prompt body
         const pageOverlay = document.querySelector('#pageOverlay'); // page overlay body
         loader.style.display = "flex"; //show loader
@@ -82,33 +84,14 @@ db.collection('workUser').get().then(fetchData => {
                         token : newToken
                     });
                     //Then show successful icon
-                    waiting.style.display = "none"; //close waiting loader
-                    success.style.display = "block"; //show success icon
-                    paymentError.style.display = "none"; //show paymentError Icon
-                    setTimeout(function(){
-                        loader.style.display ="none"; //close loader
-                        loaderBody.style.display ="none"; //close loader body
-                        success.style.display ="none"; //close success icon
-                        waiting.style.display ="none"; //close waiting 
-                        pagePromptBody.style.display ="none"; //close page prompt body 
-                        pageOverlay.style.display ="none"; //close page overlay body 
-                    }, 2000);
+                    loader.style.display = "none"; //Hide loader
+                    paymentSuccess.style.display = "block"; //show successful icon
                 }
             }
-            if(this.status == 400){
-                waiting.style.display = "none"; //close waiting loader
-                    success.style.display = "none"; //show success icon
-                    paymentError.style.display = "block"; //show paymentError Icon
-                    setTimeout(function(){
-                        loader.style.display ="none"; //close loader
-                        loaderBody.style.display ="none"; //close loader body
-                        success.style.display ="none"; //close success icon
-                        waiting.style.display ="none"; //close waiting 
-                        pagePromptBody.style.display ="none"; //close page prompt body 
-                        pageOverlay.style.display ="none"; //close page overlay body
-                        document.querySelector('#success').innerHTML = '';
-                    }, 2000);
-                console.log("Transaction complete", this.responseText);
+            if(this.status == 400){ //If transaction fails
+                loader.style.display = "none"; //Hide loader
+                paymentError.style.display = "block" //show Error message
+                console.log("Transaction Failed", this.responseText);
             }
         }
         xhttp.open('POST', "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/tokenized/charge");
@@ -168,10 +151,19 @@ db.collection('workUser').get().then(fetchData => {
     function closeModal(){
         const modal = document.querySelector('#pagePromptBody'); //page modal
         const overlay = document.querySelector('#pageOverlay'); //page overlay
+        const paymentError = document.querySelector('#failedTransaction'); //paymentError
+        const paymentSuccess = document.querySelector('#paymentSuccess'); //payment success
+        const pageLoadingOverlay = document.querySelector('#pageLoadingOverlay');
         //close modal
         modal.style.display = "none";
         //close overlay
         overlay.style.display = "none";
+        //close payment Error
+        paymentError.style.display = "none";
+        //close payment success 
+        paymentSuccess.style.display = "none";
+        //close prompt 
+        pageLoadingOverlay.style.display = "none";
     }
     var t = typeof("flw-t0-a00712f3b96947877acc1e91028e4580-m03k");
     var s = sessionStorage.getItem('token');

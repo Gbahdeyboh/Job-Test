@@ -80,7 +80,7 @@ body{
     border-radius: 2em;
     animation: anim .5s linear;
 }
-#pageLoading, #pageLoadingOverlay{
+#pageLoading, #pageLoadingOverlay, #failedTransaction{
     width: 80%;
     position: fixed;
     height: 300px;
@@ -88,22 +88,30 @@ body{
     border-radius: 2em;
 }
 #pageLoading{
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background: none;
     z-index: 2;
+}
+#failedTransaction{
+    line-height: 3em;
     display: none;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    z-index: 2;
 }
 #pageLoadingOverlay{
     opacity: 0.8;
     display: none;
 }
-#success{
+#paymentSuccess{
     display: none;
-}
-#paymentError{
-    display: none;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    z-index: 2;
 }
 #successIcon{
     color: #00e676;
@@ -116,12 +124,12 @@ body{
     }
 }
 @media only screen and (min-width: 800px){
-    #pagePrompt, #pageLoading, #pageLoadingOverlay{
+    #pagePrompt, #pageLoading, #pageLoadingOverlay, #failedTransaction{
         width: 600px;
     }
 }
 @media only screen and (max-width: 600px){
-    #pagePrompt, #pageLoading, #pageLoadingOverlay{
+    #pagePrompt, #pageLoading, #pageLoadingOverlay, #failedTransaction{
         height: 390px;
         border-radius: 8px;
     }
@@ -142,6 +150,9 @@ body{
     text-align: right;
     font-weight: bold;
     color: inherit;
+    position: absolute;
+    right: 0px;
+    z-index: 5;
     transition: color .5s linear;
 }
 #close:hover{
@@ -161,4 +172,17 @@ body{
 #warningBtn{
     margin: 10px;
     float: right;
+}
+#defaultLoaderBody{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
