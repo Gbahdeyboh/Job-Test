@@ -1,6 +1,6 @@
 :root{
     --red : #d50000;;
-    --blue: #0c50e8; 
+    --blue: #0c50e8;   
     --lightblue: #4177f1;
 }
 body{
@@ -67,7 +67,7 @@ body{
     right: 0px;
     left: 0px;
     bottom: 0px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: flex-start;
 }
@@ -106,4 +106,24 @@ body{
 }
 #progressBody{
     display: none;
+}
+#img{
+    width: 30px; 
+    height: 30px;
+}
+#profilePic{
+    height: 180px;
+    width: 180px;
+}
+#closeProfile{
+    position: absolute;
+    right: 3em;
+}
+#closeProfile i {
+    color: lightcoral;
+    transition: color .5s linear;
+    cursor: pointer;
+}
+#closeProfile i:hover{
+    color: red;
 }

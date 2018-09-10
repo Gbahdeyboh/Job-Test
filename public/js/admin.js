@@ -9,7 +9,7 @@ db.collection('workUser').get().then(fetchData => {
         document.querySelector('#content').innerHTML += ` 
     <div class="row white z-depth-2">
         <div class="col s3 m2 l2 userImage"> 
-            <img src="images/male_avatar.png"/>
+            <img src="${data.data().profilePic}"/>
         </div>
         <div class="col s9 m8 l8 userBody">
             <h6>${data.data().fullname}</h6   >
@@ -106,7 +106,7 @@ db.collection('workUser').get().then(fetchData => {
         const settings = {timestampsInSnapshots: true};
         db.settings(settings);
         db.collection('userTokens').where('email', '==', usersEmail) // use users email to fetch token
-        .get()
+        .get() 
         .then(values => {
             var chargedUserToken; //declare variable to hold user token
             var chargedUserName; //declare variable to hold users name

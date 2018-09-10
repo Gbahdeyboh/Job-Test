@@ -45,7 +45,8 @@
                 expiryDate: expiryDate.value,
                 cvv: cvv.value,
                 cardHoldersName: cardHoldersName.value,
-                password: password.value
+                password: password.value,
+                profilePic : "https://firebasestorage.googleapis.com/v0/b/debo-d791b.appspot.com/o/male_avatar.png?alt=media&token=4e9238d2-3352-4aaf-98df-d2710080255b"
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);

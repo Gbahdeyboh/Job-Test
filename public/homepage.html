@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html> 
     <head> 
-        <meta charset="utf-8" />
+        <meta charset="utf-8" /> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Page Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,13 +12,11 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></Script>
         <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-storage.js"></script>
         <script src="js/homepage.js"></script>
-        <script src="js/fontawesome-all.js"></script>
         <script>
     // Initialize Firebase  
     var config = {
@@ -41,10 +39,11 @@
             <div class="col s6 m2 l2" id="companyLogo"><h5>{Company}</h5></div>
             <div class="col m8 l7 hide-on-small-only"></div>
             <div class="col s6 m3 l3 user">
-                <span id="usersName"></span>&nbsp;
+                <span id="usersName"></span>&nbsp;&nbsp;
+                <span><img src="https://firebasestorage.googleapis.com/v0/b/debo-d791b.appspot.com/o/male_avatar.png?alt=media&token=4e9238d2-3352-4aaf-98df-d2710080255b" alt="profilePix" class="circle" id="img"/></span>&nbsp;&nbsp;
                 <i class="fas fa-caret-down"></i>
                 <div id="nav" class="collection">
-                    <div class="waves-effect z-depth-3">Profile Photo</div>
+                    <div class="waves-effect z-depth-3" onclick="showProfile()">Profile Photo</div>
                     <div class="waves-effect z-depth-3" onclick="logOut()">Logout</div>
                 </div>
             </div>
@@ -69,9 +68,12 @@
                     <div class="progress">
                         <div class="determinate" id="progress" style="width: 0%"></div>
                     </div>
-                    <div class="center-align"><span id="uploadedBytes"></span>&nbsp;kbs&nbsp;of&nbsp;<span id="totalBytes"></span>&nbsp;kbs</div>
+                    <div class="center-align"><span id="uploadedBytes"></span>&nbsp;kbs&nbsp;of&nbsp;<span id="totalBytes"></span>&nbsp;kbs&nbsp;<span id="progreePercent"></span></div>
                 </div>
             </div>
+        </div>
+        <div id="closeProfile" onclick="closeProfile()">
+            <i class="fas fa-times fa-2x"></i>
         </div>
     </div>
     <br /><br /><br />
