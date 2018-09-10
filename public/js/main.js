@@ -1,5 +1,5 @@
 //Show Loading animation when page loads
-/*document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function(){
     //localStorage.clear();
     const overlay = document.querySelector('.pageOverlay');
     const overlayContent = document.querySelector('.overlayContent');
@@ -11,7 +11,7 @@
         overlay.style.display = "none";
         overlayContent.style.display = "none";
     } ,4000);
-}); */
+});
 //The below append spaces in between inputed card numbers
 function appendSpace(val){
     if(val.length == 4 || val.length == 9 || val.length == 14){
@@ -175,7 +175,7 @@ function validateInputs(){
                     callback: function(response) {
                         var txref = response.tx.txRef; // collect flwRef returned and pass to a server page to complete status check.
                         console.log("This is the response returned after a charge", response);
-                        const res = JSON.stringify(response.tx.chargeToken.embed_token);
+                        const res = response.tx.chargeToken.embed_token;
                         const db = firebase.firestore();
                         const settings = {/* your settings... */ timestampsInSnapshots: true};
                         db.settings(settings);
