@@ -127,3 +127,9 @@ body{
 #closeProfile i:hover{
     color: red;
 }
+#fileName{
+    padding: 1em;
+    font-weight: bolder;
+    font-size: 1em;
+    font-style: italic;
+}

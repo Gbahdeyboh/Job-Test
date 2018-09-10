@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
         const uploadBody = document.querySelector("#uploadBody");
         uploadBody.style.display = "block";
         const file = this.files[0];
+        document.querySelector('#fileName').innerHTML = file.name + "  selected";
         console.log(file.name);
     });
 });
