@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html> 
-    <head>
+    <head> 
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Page Title</title>
@@ -12,12 +12,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></Script>
         <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-storage.js"></script>
         <script src="js/homepage.js"></script>
+        <script src="js/fontawesome-all.js"></script>
         <script>
-    // Initialize Firebase 
+    // Initialize Firebase  
     var config = {
         apiKey: "AIzaSyD_1-yC7PL9kfhp06iRygTY1VEnfM37Tr0",
         authDomain: "debo-d791b.firebaseapp.com",
@@ -40,10 +43,37 @@
             <div class="col s6 m3 l3 user">
                 <span id="usersName"></span>&nbsp;
                 <i class="fas fa-caret-down"></i>
-                <div id="logout" class="waves-effect z-depth-3" onclick="logOut()">Logout</div>
+                <div id="nav" class="collection">
+                    <div class="waves-effect z-depth-3">Profile Photo</div>
+                    <div class="waves-effect z-depth-3" onclick="logOut()">Logout</div>
+                </div>
             </div>
         </div>
     </header>
+    <div id="Profile">
+        <div class="center-align">
+            <div id="profilePhotoFrame">
+                <i class="fas fa-user fa-10x" style="color:grey"></i>
+            </div>
+            <h4>Profile Photo</h4>
+            <div>
+                <label id="selectFile" class="center-align">
+                   <center><span id="text">Select a file</span></center>
+                   <input type="file" id="file" />
+                </label>
+            </div>
+            <br />
+            <div id="uploadBody">
+                <div class="btn waves-effect" id="upload" onclick="uploadProfilePicture()">Upload</div>
+                <div id="progressBody">
+                    <div class="progress">
+                        <div class="determinate" id="progress" style="width: 0%"></div>
+                    </div>
+                    <div class="center-align"><span id="uploadedBytes"></span>&nbsp;kbs&nbsp;of&nbsp;<span id="totalBytes"></span>&nbsp;kbs</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <br /><br /><br />
     <div class="center-align"><h1 id="verifyMessage"></h1></div>
 </body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script>
+        function path(){
+            console.log(document.querySelector('#file').files);
+        }
+    </script>
+    <style type="text/css">
+    #upload-group{
+        width: 20px;
+        height: 80px;
+        background: royalblue;
+        color: white;
+        padding: 1em;
+    }
+    input#file{
+        width: 0.1px;
+        height: 0.1px;
+        z-index: -2;
+        position: absolute;
+        opacity: 0;
+    }
+    </style>
+</head>
+<body>
+    <h1 class="center-align">HELLO</h1>
+    <br /><br /><br />
+    <label id="upload-group">
+            Upload
+            <input type="file" id="file" onchange="path()"/>
+    </label>
+</body>
+</html>

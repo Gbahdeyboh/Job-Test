@@ -1,5 +1,5 @@
 //Show Loading animation when page loads
-document.addEventListener('DOMContentLoaded', function(){
+/*document.addEventListener('DOMContentLoaded', function(){
     //localStorage.clear();
     const overlay = document.querySelector('.pageOverlay');
     const overlayContent = document.querySelector('.overlayContent');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function(){
         overlay.style.display = "none";
         overlayContent.style.display = "none";
     } ,4000);
-});
+}); */
 //The below append spaces in between inputed card numbers
 function appendSpace(val){
     if(val.length == 4 || val.length == 9 || val.length == 14){
@@ -253,3 +253,14 @@ function login(){
     overlayContent.style.display = "flex";
     loadText.innerHTML = "Creating your account ......";
 }
+document.querySelector('#file').addEventListener('change', function(){
+    var files = this.files;
+    var fileName = files[0].name;
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
+    var fileToUpload = storageRef.child('profilePics/' + fileName);
+    fileToUpload.put(files[0]).then(function(snapshot) {
+        console.log('Uploaded a blob or file!');
+      });
+    console.log(fileToUpload.fullPath);
+});
